@@ -63,7 +63,7 @@ def webhook():
 
 # Установка webhook на сервер Telegram
 def set_webhook():
-    webhook_url = f"https://your-app-name.onrender.com/webhook"  # Укажи URL своего сервера на Render
+    webhook_url = f"https://telegram-ai-bot-p30m.onrender.com"  # Укажи URL своего сервера на Render
     bot.set_webhook(webhook_url)
 
 # Запуск Flask
