@@ -5,8 +5,8 @@ from telegram import Bot, Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, CallbackContext
 
 # Токены
-TELEGRAM_BOT_TOKEN = os.getenv("7604837388:AAGJnvQIG-F5xbcAMnBf-5XjMsD9vzO6X7o")
-OPENAI_API_KEY = os.getenv("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")
+TELEGRAM_BOT_TOKEN = "7604837388:AAGJnvQIG-F5xbcAMnBf-5XjMsD9vzO6X7o"
+OPENAI_API_KEY = "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"
 
 # Настройка OpenAI
 openai.api_key = OPENAI_API_KEY
