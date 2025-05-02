@@ -4,7 +4,7 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, ContextTypes, filters
 
 # Токены
-TELEGRAM_BOT_TOKEN = "7604837388:AAGaU2kP_a_yBfKVYD3VeezVNG3H1V4YJU"
+TELEGRAM_BOT_TOKEN = "7604837388:AAGaUO2kP_a_yBfKVYD3VeezVNG3H1V4YJU"
 OPENAI_API_KEY = "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"
 
 # Настройка OpenAI
