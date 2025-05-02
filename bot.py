@@ -47,4 +47,4 @@ if __name__ == "__main__":
 
     # Запуск бота с учетом порта, чтобы он мог работать на Render
     # Для Render нужно либо использовать webhook, либо polling. В данном примере используем polling.
-    app.run_polling(port=PORT)
+    app.run_polling()
