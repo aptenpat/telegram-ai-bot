@@ -22,13 +22,13 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_input = update.message.text
 
     try:
-        response = openai.Completion.create(
-            engine="text-davinci-003",
-            prompt=user_input,
-            max_tokens=150,
-            temperature=0.7,
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "user", "content": user_input},
+            ]
         )
-        answer = response.choices[0].text.strip()
+        answer = response['choices'][0]['message']['content'].strip()
         await update.message.reply_text(answer)
     except Exception as e:
         await update.message.reply_text("Ошибка при запросе к ИИ 😢")
