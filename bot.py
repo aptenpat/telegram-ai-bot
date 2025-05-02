@@ -2,8 +2,7 @@ import os
 import openai
 from flask import Flask, request
 from telegram import Bot, Update
-from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters
-from telegram.ext import Dispatcher, CallbackContext
+from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, CallbackContext
 
 # Токены
 TELEGRAM_BOT_TOKEN = os.getenv("7604837388:AAGJnvQIG-F5xbcAMnBf-5XjMsD9vzO6X7o")
@@ -51,14 +50,14 @@ def webhook():
     update = Update.de_json(json_str, bot)
     
     # Диспетчер для обработки входящих сообщений
-    dispatcher = Dispatcher(bot, None)
+    application = application(bot, None)
     
     # Добавляем обработчики команд и сообщений
-    dispatcher.add_handler(CommandHandler("start", start))
-    dispatcher.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
+    application.add_handler(CommandHandler("start", start))
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
     
     # Обрабатываем update
-    dispatcher.process_update(update)
+    application.process_update(update)
     return '', 200
 
 # Установка webhook на сервер Telegram
