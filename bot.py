@@ -3,6 +3,7 @@ import openai
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, ContextTypes, filters
 from telegram.ext import Updater
+from dotenv import load_dotenv
 
 # Загружаем токены из переменных окружения
 print("OPENAI_API_KEY:", os.environ.get("OPENAI_API_KEY"))
