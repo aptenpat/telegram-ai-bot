@@ -3,12 +3,11 @@ import openai
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, ContextTypes, filters
 from telegram.ext import Updater
-from dotenv import load_dotenv
 
 # Загружаем токены из переменных окружения
 print("OPENAI_API_KEY:", os.environ.get("OPENAI_API_KEY"))
-BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+TELEGRAM_BOT_TOKEN = "7604837388:AAGaUO2kP_a_yBfKVYD3VeezVNG3H1V4YJU"
+OPENAI_API_KEY = "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"
 openai.api_key = OPENAI_API_KEY
 
 # Получаем порт из переменных окружения, если он есть (для Render)
@@ -38,7 +37,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # Запуск приложения
 if __name__ == "__main__":
     # Используем ApplicationBuilder для запуска бота
-    app = ApplicationBuilder().token(BOT_TOKEN).build()
+    app = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
 
     # Добавляем обработчики команд и сообщений
     app.add_handler(CommandHandler("start", start))
