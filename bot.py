@@ -6,6 +6,7 @@ from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, Con
 # Загружаем токены из переменных окружения
 BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+print("Ключ OPENAI_API_KEY из окружения:", OPENAI_API_KEY)
 openai.api_key = OPENAI_API_KEY
 
 # Обработчик команды /start
