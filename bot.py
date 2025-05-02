@@ -2,12 +2,16 @@ import os
 import openai
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, ContextTypes, filters
+from telegram.ext import Updater
 
 # Загружаем токены из переменных окружения
 print("OPENAI_API_KEY:", os.environ.get("OPENAI_API_KEY"))
 BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 openai.api_key = OPENAI_API_KEY
+
+# Получаем порт из переменных окружения, если он есть (для Render)
+PORT = int(os.environ.get("PORT", 5000))
 
 # Обработчик команды /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -32,10 +36,15 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # Запуск приложения
 if __name__ == "__main__":
+    # Используем ApplicationBuilder для запуска бота
     app = ApplicationBuilder().token(BOT_TOKEN).build()
 
+    # Добавляем обработчики команд и сообщений
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
     print("Бот запущен!")
-    app.run_polling()
+
+    # Запуск бота с учетом порта, чтобы он мог работать на Render
+    # Для Render нужно либо использовать webhook, либо polling. В данном примере используем polling.
+    app.run_polling(port=PORT)
